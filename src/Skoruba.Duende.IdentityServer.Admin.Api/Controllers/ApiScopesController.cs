@@ -19,6 +19,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
     [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     [Produces("application/json", "application/problem+json")]
     [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
+    // [Authorize]
     public class ApiScopesController : ControllerBase
     {
         private readonly IApiErrorResources _errorResources;
@@ -69,10 +70,11 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
                 return BadRequest(_errorResources.CannotSetId());
             }
 
-            var apiScopeId = await _apiScopeService.AddApiScopeAsync(apiScope);
-            apiScope.Id = apiScopeId;
+            var id = await _apiScopeService.AddApiScopeAsync(apiScope);
+            apiScope.Id = id;
 
-            return CreatedAtAction(nameof(GetScope), new {id = apiScopeId}, apiScope);
+            // return CreatedAtAction(nameof(GetScope), new {scopeId = id}, apiScope);
+            return CreatedAtAction(nameof(GetScope), new {id}, apiScope);
         }
 
         [HttpPost("{id}/Properties")]

@@ -2,16 +2,16 @@
   "IdentityData": {
     "Roles": [
       {
-        "Name": "SkorubaIdentityAdminAdministrator"
+        "Name": "CardanoBIIdentityAdminAdministrator"
       }
     ],
     "Users": [
       {
         "Username": "admin",
         "Password": "Pa$$word123",
-        "Email": "admin@skoruba.com",
+        "Email": "admin@cardanobi.io",
         "Roles": [
-          "SkorubaIdentityAdminAdministrator"
+          "CardanoBIIdentityAdminAdministrator"
         ],
         "Claims": [
           {

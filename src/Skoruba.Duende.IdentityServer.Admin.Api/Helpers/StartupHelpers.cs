@@ -246,13 +246,24 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Helpers
 
             services.AddAuthorization(options =>
             {
+                // options.AddPolicy(AuthorizationConsts.AdministrationPolicy,
+                //     policy =>
+                //         policy.RequireAssertion(context => context.User.HasClaim(c =>
+                //                 ((c.Type == JwtClaimTypes.Role && c.Value == adminApiConfiguration.AdministrationRole) ||
+                //                  (c.Type == $"client_{JwtClaimTypes.Role}" && c.Value == adminApiConfiguration.AdministrationRole))
+                //             ) && context.User.HasClaim(c => c.Type == JwtClaimTypes.Scope && c.Value == adminApiConfiguration.OidcApiName)
+                //         ));
+
                 options.AddPolicy(AuthorizationConsts.AdministrationPolicy,
                     policy =>
                         policy.RequireAssertion(context => context.User.HasClaim(c =>
-                                ((c.Type == JwtClaimTypes.Role && c.Value == adminApiConfiguration.AdministrationRole) ||
-                                 (c.Type == $"client_{JwtClaimTypes.Role}" && c.Value == adminApiConfiguration.AdministrationRole))
-                            ) && context.User.HasClaim(c => c.Type == JwtClaimTypes.Scope && c.Value == adminApiConfiguration.OidcApiName)
+                                ((c.Type == JwtClaimTypes.Role && c.Value == adminApiConfiguration.AdministrationRole) || 
+                                (c.Type == "client_profile" && c.Value == adminApiConfiguration.AdministrationRole))
+                            ) 
                         ));
+
+                // options.AddPolicy(AuthorizationConsts.AdministrationPolicy,
+                //     policy => policy.RequireRole(adminApiConfiguration.AdministrationRole));
             });
         }
 

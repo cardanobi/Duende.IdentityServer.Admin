@@ -19,7 +19,7 @@ using Skoruba.Duende.IdentityServer.Admin.UI.Helpers.Localization;
 
 namespace Skoruba.Duende.IdentityServer.Admin.UI.Areas.AdminUI.Controllers
 {
-    [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
+    // [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
     [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     [Area(CommonConsts.AdminUIArea)]
     public class IdentityController<TUserDto, TRoleDto, TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken,

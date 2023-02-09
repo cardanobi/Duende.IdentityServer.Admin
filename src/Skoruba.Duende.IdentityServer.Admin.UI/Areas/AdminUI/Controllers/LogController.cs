@@ -11,7 +11,7 @@ using Skoruba.Duende.IdentityServer.Admin.UI.Configuration.Constants;
 
 namespace Skoruba.Duende.IdentityServer.Admin.UI.Areas.AdminUI.Controllers
 {
-    [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
+    // [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
     [Area(CommonConsts.AdminUIArea)]
     public class LogController : BaseController
     {
