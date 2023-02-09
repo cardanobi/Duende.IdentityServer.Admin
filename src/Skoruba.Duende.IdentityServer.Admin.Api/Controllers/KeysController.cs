@@ -16,7 +16,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
     [ApiController]
     [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     [Produces("application/json")]
-    [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
+    // [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
     public class KeysController : ControllerBase
     {
         private readonly IKeyService _keyService;

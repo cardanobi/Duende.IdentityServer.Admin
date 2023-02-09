@@ -51,7 +51,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> Post([FromBody]ClientApiDto client)
+        public async Task<IActionResult> Post([FromBody] ClientApiDto client)
         {
             var clientDto = client.ToClientApiModel<ClientDto>();
 
@@ -67,7 +67,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody]ClientApiDto client)
+        public async Task<IActionResult> Put([FromBody] ClientApiDto client)
         {
             var clientDto = client.ToClientApiModel<ClientDto>();
 
@@ -91,7 +91,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         [HttpPost("Clone")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> PostClientClone([FromBody]ClientCloneApiDto client)
+        public async Task<IActionResult> PostClientClone([FromBody] ClientCloneApiDto client)
         {
             var clientCloneDto = client.ToClientApiModel<ClientCloneDto>();
 
@@ -123,7 +123,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         [HttpPost("{id}/Secrets")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> PostSecret(int id, [FromBody]ClientSecretApiDto clientSecretApi)
+        public async Task<IActionResult> PostSecret(int id, [FromBody] ClientSecretApiDto clientSecretApi)
         {
             var secretsDto = clientSecretApi.ToClientApiModel<ClientSecretsDto>();
             secretsDto.ClientId = id;
@@ -171,7 +171,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         [HttpPost("{id}/Properties")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> PostProperty(int id, [FromBody]ClientPropertyApiDto clientPropertyApi)
+        public async Task<IActionResult> PostProperty(int id, [FromBody] ClientPropertyApiDto clientPropertyApi)
         {
             var clientPropertiesDto = clientPropertyApi.ToClientApiModel<ClientPropertiesDto>();
             clientPropertiesDto.ClientId = id;
@@ -219,7 +219,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.Api.Controllers
         [HttpPost("{id}/Claims")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> PostClaim(int id, [FromBody]ClientClaimApiDto clientClaimApiDto)
+        public async Task<IActionResult> PostClaim(int id, [FromBody] ClientClaimApiDto clientClaimApiDto)
         {
             var clientClaimsDto = clientClaimApiDto.ToClientApiModel<ClientClaimsDto>();
             clientClaimsDto.ClientId = id;
