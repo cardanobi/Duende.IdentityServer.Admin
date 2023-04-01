@@ -16,7 +16,7 @@ using Skoruba.Duende.IdentityServer.Admin.UI.Helpers;
 
 namespace Skoruba.Duende.IdentityServer.Admin.UI.Areas.AdminUI.Controllers
 {
-    // [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
+    [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
     [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     [Area(CommonConsts.AdminUIArea)]
     public class ConfigurationController : BaseController

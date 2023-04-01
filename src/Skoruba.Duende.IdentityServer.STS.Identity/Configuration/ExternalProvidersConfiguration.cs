@@ -17,5 +17,9 @@ namespace Skoruba.Duende.IdentityServer.STS.Identity.Configuration
         public string AzureInstance { get; set; }
         public string AzureAdCallbackPath { get; set; }
         public string AzureDomain { get; set; }
+
+        public bool UseGoogleProvider { get; set; }
+        public string GoogleClientId { get; set; }
+        public string GoogleClientSecret { get; set; }
     }
 }
