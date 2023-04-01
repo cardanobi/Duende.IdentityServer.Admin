@@ -410,6 +410,15 @@ namespace Skoruba.Duende.IdentityServer.STS.Identity.Helpers
                 });
             }
 
+            if (externalProviderConfiguration.UseGoogleProvider)
+            {
+                authenticationBuilder.AddGoogle(options =>
+                {
+                    options.ClientId = externalProviderConfiguration.GoogleClientId;
+                    options.ClientSecret = externalProviderConfiguration.GoogleClientSecret;
+                });
+            }
+
             if (externalProviderConfiguration.UseAzureAdProvider)
             {
                 authenticationBuilder.AddMicrosoftIdentityWebApp(options =>
