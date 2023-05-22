@@ -374,7 +374,7 @@
   height: 28px;
   position: relative;
   width: 54px;
-  margin-top: 5px; }
+}
 
 .switch input {
   display: none; }
@@ -399,12 +399,14 @@
   width: 26px; }
 
 input:not(:checked) + .bg-primary {
-  background-color: #ccc !important;
-  background-image: none !important; }
+    background-color: #9a9cab !important;
+    background-image: none !important;
+}
 
 input:checked + .bg-primary {
-  background-color: #4ed164 !important;
-  background-image: none !important; }
+    background-color: #86c1ed !important;
+    background-image: none !important;
+}
 
 input:checked + .slider:before {
   transform: translateX(26px); }

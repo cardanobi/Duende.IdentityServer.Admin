@@ -60,6 +60,7 @@ namespace Skoruba.Duende.IdentityServer.STS.Identity.Helpers
                 .AddViewLocalization(
                     LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = ConfigurationConsts.ResourcesPath; })
+                //.AddRazorRuntimeCompilation()
                 .AddDataAnnotationsLocalization()
                 .ConfigureApplicationPartManager(m =>
                 {
