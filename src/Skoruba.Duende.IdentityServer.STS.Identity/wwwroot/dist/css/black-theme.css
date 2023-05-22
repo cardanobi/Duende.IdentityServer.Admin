@@ -1,0 +1,78 @@
+body {
+    background-color: black;
+    color: #9a9cab;
+    /*font-family: Poppins,sans-serif;*/
+}
+
+.card {
+    background-color: black;
+}
+
+.cls-link,
+.cls-link:hover {
+    color: #83d8ae;
+    text-decoration: none;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited {
+    /* background-color: #ada6f2;
+            border-color: #ada6f2;*/
+    /* #86c1ed  49c5b6*/
+    background-color: #86c1ed !important;
+    border-color: #86c1ed !important;
+    color: #fff !important;
+}
+
+.form-control {
+    /* border-color: #2d2d3f;*/
+    border-color: #8585d8 !important;
+    background: #181821 !important;
+    color: #fff !important;
+}
+
+    .form-control:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px inset; /* Change the color to your own background color */
+        -webkit-text-fill-color: #fff;
+    }
+
+    .form-control:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 50px inset; /*your box-shadow*/
+        -webkit-text-fill-color: #fff;
+    }
+
+
+    .form-control:focus,
+    .form-control:autofill {
+        border-color: #8585d8 !important;
+        background: #181821 !important;
+    }
+
+    .form-control:disabled,
+    .form-control[readonly],
+    .form-select:disabled {
+        border-color: #8585d8 !important;
+        background: #181821 !important;
+        opacity: .8
+    }
+.input-group-prepend
+{
+   
+}
+
+.navbar__logo img {
+    height: 100%;
+}
+
+.navbar__logo {
+    flex: 0 0 auto;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+.cls-inline-flex {
+    display: inline-flex;
+}

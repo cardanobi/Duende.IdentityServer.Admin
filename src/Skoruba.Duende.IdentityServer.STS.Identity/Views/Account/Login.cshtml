@@ -4,21 +4,20 @@
 @inject IViewLocalizer Localizer
 @model Skoruba.Duende.IdentityServer.STS.Identity.ViewModels.Account.LoginViewModel
 @inject IRootConfiguration RootConfiguration
-
+@{
+    Layout = "_LayoutBlackTheme";
+}
 <div class="login-page">
-    <div class="page-header">
-        <h1>@Localizer["Title"]</h1>
-    </div>
-
     @await Html.PartialAsync("_ValidationSummary")
-
     <div class="row">
 
         @if (Model.EnableLocalLogin)
         {
-            <div class="col-sm-6">
+            <div class="col-sm-6 offset-sm-3">
                 <div class="card mt-3">
-                    <h5 class="card-header">@Localizer["LocalLogin"]</h5>
+                    <div class="navbar__logo text-center">
+                        <img src="~/images/cardanobi_logo_full_white.png" alt="CardanoBI">
+                    </div>
                     <div class="card-body">
                         <form asp-route="Login">
                             <input type="hidden" asp-for="ReturnUrl" />
@@ -53,55 +52,58 @@
                                 @if (Model.AllowRememberLogin)
                                 {
                                     <div class="form-group login-remember row">
-                                        <div class="col-sm-9">
-                                            <div>
-                                                @Localizer["Remember"]
-                                            </div>
+                                        <div class="col-sm-9 cls-inline-flex">
                                             <toggle-button>
                                                 <input asp-for="RememberLogin" type="checkbox">
                                             </toggle-button>
+                                            <div class="pl-2 mt-1">
+                                                @Localizer["Remember"]
+                                            </div>
                                         </div>
                                     </div>
                                 }
 
-                                <!--Button-->
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <button class="btn btn-primary" name="button" value="login">@Localizer["Login"]</button>
-                                        <button class="btn btn-secondary" name="button" value="cancel">@Localizer["Cancel"]</button>
-                                        <a asp-action="ForgotPassword" asp-controller="Account" class="btn btn-info" value="forgot">@Localizer["Forgot"]</a>                                        
-                                        @if (RootConfiguration.RegisterConfiguration.Enabled)
-                                        {
-                                            <a asp-action="Register" asp-controller="Account" class="btn btn-dark" value="forgot">@Localizer["Register"]</a>
-                                        }
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        }
 
-        @if (Model.VisibleExternalProviders.Any())
-        {
-            <div class="col-sm-6 external-providers">
-                <div class="card mt-3">
-                    <h5 class="card-header">@Localizer["ExternalLogin"]</h5>
-                    <div class="card-body">
-                        <ul class="list-inline">
-                            @foreach (var provider in Model.VisibleExternalProviders)
-                            {
-                                <li class="list-inline-item">
-                                    <a class="btn btn-primary"
+                                <div class="form-group row">
+                                    <div class="col-sm-12 ">
+                                        <button class="btn btn-primary btn-block" name="button" value="login">@Localizer["Login"]</button>
+                                        @if (Model.VisibleExternalProviders.Any())
+                                        {
+                                            @foreach (var provider in Model.VisibleExternalProviders)
+                                            {
+                                                <a class="btn btn-primary btn-block"
                                        asp-action="ExternalLogin"
                                        asp-route-provider="@provider.AuthenticationScheme"
                                        asp-route-returnUrl="@Model.ReturnUrl">
-                                        @provider.DisplayName
-                                    </a>
-                                </li>
-                            }
-                        </ul>
+                                                    @provider.DisplayName
+                                                </a>
+                                            }
+                                        }
+
+                                        <div class="text-center mt-3">
+                                            <div class="">
+                                                <span class="helper-text m-b-10">
+                                                    <i class="fa fa-lock"></i>
+                                                    <a asp-action="ForgotPassword" asp-controller="Account" class="cls-link" value="forgot">@Localizer["Forgot"]</a>
+                                                </span>
+
+                                            </div>
+                                            @if (RootConfiguration.RegisterConfiguration.Enabled)
+                                            {
+                                                <div class="">
+                                                    <span>
+                                                        Don't have an account?
+                                                        <a asp-action="Register" asp-controller="Account" class="cls-link" value="forgot">@Localizer["Register"]</a>
+                                                    </span>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>

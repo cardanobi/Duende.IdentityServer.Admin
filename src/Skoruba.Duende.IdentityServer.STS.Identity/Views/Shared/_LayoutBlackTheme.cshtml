@@ -1,0 +1,86 @@
+﻿@using Duende.IdentityServer.Extensions
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Skoruba.Duende.IdentityServer.Admin.EntityFramework.Shared.Entities.Identity
+@using Skoruba.Duende.IdentityServer.STS.Identity.Configuration.Interfaces
+@inject IRootConfiguration RootConfiguration
+@inject IViewLocalizer Localizer
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+}
+
+@inject SignInManager<UserIdentity> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@RootConfiguration.AdminConfiguration.PageTitle</title>
+    <link rel="icon" type="image/x-icon" href="@UrlHelper.Content(RootConfiguration.AdminConfiguration.FaviconUri)" />
+    <link rel="shortcut icon" type="image/x-icon" href="@UrlHelper.Content(@RootConfiguration.AdminConfiguration.FaviconUri)" />
+
+    <environment include="Development">
+        <link href="~/dist/css/bundle.min.css" asp-append-version="true" rel="stylesheet" />
+        @await Html.PartialAsync("Common/ThemeResources")
+        <link href="~/dist/css/web.css" asp-append-version="true" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/dist/css/bundle.min.css" asp-append-version="true" rel="stylesheet" />
+        @await Html.PartialAsync("Common/ThemeResources")
+        <link href="~/dist/css/web.min.css" asp-append-version="true" rel="stylesheet" />
+    </environment>
+
+    @if (!string.IsNullOrEmpty(RootConfiguration.AdminConfiguration.CustomThemeCss))
+    {
+        <link href="@UrlHelper.Content(RootConfiguration.AdminConfiguration.CustomThemeCss)" asp-append-version="true" rel="stylesheet" />
+    }
+    <link href="~/dist/css/black-theme.css" rel="stylesheet" />
+
+    @await RenderSectionAsync("styles", required: false)
+
+</head>
+<body>
+    <nav class="navbar navbar--fixed-top" id="navbar">
+        <div class="navbar__inner">
+            <div class="navbar__items">
+                <a class="navbar__brand">
+                    <div class="navbar__logo">
+                        <img src="~/images/cardanobi_logo_full_white.png" alt="CardanoBI">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+       <div>
+            @RenderBody()
+       </div>
+
+        <div class="page-header bg-darker mt-5">
+            <div class="col d-flex justify-content-center">
+                <div class="badge rounded-pill bg-success-bright-orange">
+                    <strong>Copyright © @DateTime.Now.Year CardanoBI. All rights reserved.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <environment include="Development">
+        <script src="~/dist/js/bundle.min.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/dist/js/bundle.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @await RenderSectionAsync("scripts", required: false)
+</body>
+</html>
